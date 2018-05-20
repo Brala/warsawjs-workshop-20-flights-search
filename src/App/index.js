@@ -23,7 +23,7 @@ export default class App extends Component {
      case 'search':
        return <SearchView onSearch={this.onSearch}/>
      case 'flights':
-       return <FlightsView searchData={this.state.searchData}/>
+       return <FlightsView onBackClick={this.onBackClick} searchData={this.state.searchData}/>
      default:
        return <p>
          Ajc

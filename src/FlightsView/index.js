@@ -1,10 +1,17 @@
 import React from 'react';
+import Flight from './Flight'
 
 export default class FlightsView extends React.Component {
 
     state = {
         flights: []
     }
+
+    onBackClick = e => {
+        e.preventDefault()
+        this.props.onBackClick(this.state)
+      }
+     
 
     async componentDidMount() {
         const {from, to, departDate, returnDate} = this.props.searchData
@@ -17,14 +24,19 @@ export default class FlightsView extends React.Component {
     }
  render() {
    return (
+       <React.Fragment>
+           
+     <button type="submit">Search</button>
+       <button onClick={this.onBackClick}> {this.props.onBackClick}Back</button>
+
        <ul>
        {
            this.state.flights.map(
                flight => <Flight flight={flight}/>
-               
            )
        }
        </ul>
+       </React.Fragment>
    )
  }
 }
